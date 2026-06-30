@@ -7,20 +7,19 @@ let usuarios = [
     { id: 1, nome: "Victor", cargo: "Desenvolvedor" }
 ];
 
-// [GET] Buscar dados
+
 app.get('/usuarios', (req, res) => {
     res.json(usuarios);
 });
 
-// [POST] Criar novos dados
+
 app.post('/usuarios', (req, res) => {
-    const { nome, cargo } = req.body; // Pega os dados enviados no corpo da requisição
+    const { nome, cargo } = req.body; 
     const novoUsuario = { id: usuarios.length + 1, nome, cargo };
     usuarios.push(novoUsuario);
-    res.status(201).json(novoUsuario); // Retorna o usuário criado com status 201 (Created)
+    res.status(201).json(novoUsuario); 
 });
 
-// [PUT] Atualizar COMPLETAMENTE um dado
 app.put('/usuarios/:id', (req, res) => {
     const { id } = req.params; // Pega o ID enviado na URL
     const { nome, cargo } = req.body;
